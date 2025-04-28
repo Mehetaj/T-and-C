@@ -3,7 +3,6 @@ import ContactSection from "@/components/home/get-in-touch";
 import HeroSection from "@/components/home/HeroSection";
 import Navigation from "@/components/public/Navigation";
 import RestaurantGallerySection from "@/components/home/restauran-gallery-section";
-import StoryRestaurantSections from "@/components/home/story-restaurant-sections";
 import StorySection from "@/components/home/story-section";
 import TopBar from "@/components/public/TopBar";
 
