@@ -1,37 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# T&C Lounge - Restaurant Website
 
-## Getting Started
+A modern, responsive website for T&C Lounge, a premier dining establishment located in Mirpur-10, Dhaka, Bangladesh.
 
-First, run the development server:
+## Overview
+
+T&C Lounge offers an exceptional dining experience with a blend of traditional and contemporary cuisine. Our website showcases our menu, ambiance, and allows customers to make online reservations.
+
+## Features
+
+- **Online Reservation System**: Easy-to-use table booking system
+- **Dynamic Menu Display**: Categorized menu items with prices
+- **Photo Gallery**: High-quality images of our dishes and restaurant ambiance
+- **Contact Information**: Location details, opening hours, and contact methods
+- **Responsive Design**: Optimized for all devices (mobile, tablet, desktop)
+
+## Tech Stack
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
+- React Hook Form
+- Next Auth (for admin panel)
+
+## Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Build for production
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-"# T-and-C" 
+# Start production server
+npm start
