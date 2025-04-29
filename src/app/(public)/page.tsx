@@ -11,7 +11,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <TopBar />
-      <Navigation />
       <HeroSection videoId="WdWEMXnHBVI" />
       <StorySection />
       <RestaurantGallerySection />

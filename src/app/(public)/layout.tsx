@@ -1,4 +1,5 @@
 import Footer from "@/components/public/footer";
+import Navigation from "@/components/public/Navigation";
 
 export default function PublicLayout({
   children,
@@ -8,6 +9,7 @@ export default function PublicLayout({
   return (
     <div>
       <main className="">
+        <Navigation />
         {children}
         <Footer />
       </main>
