@@ -1,60 +1,262 @@
 @import "tailwindcss";
 
-@layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
-      --primary: 222.2 47.4% 11.2%;
-      --primary-foreground: 210 40% 98%;
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 222.2 84% 4.9%;
-      --radius: 0.5rem;
-    }
-  
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-      --primary: 210 40% 98%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 212.7 26.8% 83.9%;
-    }
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2 rounded-sm border border-white text-white hover:bg-black transition-colors cursor-pointer;
   }
   
-  /* Add custom script font for the gold headings */
+  .btn-secondary {
+    @apply px-8 py-3 bg-[#d8b78e] text-white font-medium hover:bg-[#c3a57d] transition-colors rounded-sm;
+  }
+  
+  .btn-admin {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
   @font-face {
     font-family: "ScriptFont";
     src: url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
     font-weight: normal;
     font-style: normal;
   }
-  
+
   .font-script {
     font-family: "Dancing Script", cursive;
   }
+}
+
+/* Custom button styles */
+:root {
+  --primary: #ff5569;
+  --neutral-1: #f7f8f7;
+  --neutral-2: #e7e7e7;
+  --radius: 14px;
+}
+
+.button {
+  --shadow-light: 0 0.5px 0.5px 1px rgba(255, 255, 255, 0.2);
+  --shadow-main: 0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 5px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 0 1px 2px rgba(255, 255, 255, 0.3), 0 15px 30px rgba(0, 0, 0, 0.3), 0 10px 3px -3px rgba(0, 0, 0, 0.04);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  height: 68px;
+  padding: 20px;
+  border: none;
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
+  font-family: "Galano Grotesque", Poppins, Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-light), var(--shadow-main);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.button:active {
+  transform: scale(1);
+  box-shadow: 0 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 10px 3px -3px rgba(0, 0, 0, 0.2);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 2.5px solid transparent;
+  border-radius: var(--radius);
+  background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45)) border-box;
+  transition: all 0.4s ease;
+}
+
+.button:hover::after {
+  transform: scale(1.05, 1.1);
+  box-shadow: inset 0 -1px 3px 0 #fff;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 7px 6px 6px 6px;
+  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+  border-radius: 30px;
+  filter: blur(0.5px);
+  z-index: 2;
+}
+
+.outline {
+  position: absolute;
+  inset: -2px -3.5px;
+  z-index: 1;
+  border-radius: inherit;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.outline::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+  animation: spin 2s linear infinite paused;
+}
+
+.button:hover .outline {
+  opacity: 1;
+}
+
+.button:hover .outline::before {
+  animation-play-state: running;
+}
+
+/* Keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) translateX(5px) rotate(-90deg);
+    color: var(--primary);
+    filter: blur(5px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(4px);
+    filter: blur(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes wave {
+  30% {
+    transform: translateY(4px);
+  }
+  50% {
+    transform: translateY(-3px);
+    color: var(--primary);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes disapear {
+  to {
+    opacity: 0;
+    transform: translate(5px, 20px);
+    color: var(--primary);
+    filter: blur(5px);
+  }
+}
+@keyframes takeOff {
+  60% {
+    transform: translateX(70px) rotate(45deg) scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(160px) rotate(45deg) scale(0);
+  }
+}
+@keyframes land {
+  0% {
+    transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes contrail {
+  8% {
+    width: 15px;
+  }
+  60% {
+    opacity: 0.7;
+    width: 80px;
+  }
+  100% {
+    opacity: 0;
+    width: 160px;
+  }
+}
+@keyframes appear {
+  0% {
+    transform: scale(4) rotate(-40deg);
+    filter: blur(4px);
+    color: var(--primary);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}

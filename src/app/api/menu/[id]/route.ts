@@ -4,13 +4,13 @@ import { NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {
-  const category = await prisma.category.findUnique({ where: { id: params.id } });
-  return NextResponse.json(category);
+  const menuItem = await prisma.menuItem.findUnique({ where: { id: params.id } });
+  return NextResponse.json(menuItem);
 }
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const body = await req.json();
-  const updated = await prisma.category.update({
+  const updated = await prisma.menuItem.update({
     where: { id: params.id },
     data: body,
   });
@@ -18,6 +18,6 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 }
 
 export async function DELETE(_: Request, { params }: { params: { id: string } }) {
-  await prisma.category.delete({ where: { id: params?.id } });
+  await prisma.menuItem.delete({ where: { id: params?.id } });
   return NextResponse.json({ message: 'Deleted' });
 }
