@@ -78,3 +78,17 @@ model MenuItem {
   updatedAt   DateTime @updatedAt
 }
 
+model Reservation {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName String
+  email        String
+  phone        String
+  date         DateTime
+  time         String
+  partySize    Int
+  status       String   @default("pending") // pending, confirmed, cancelled
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { X } from 'lucide-react'
+import { X, Loader2 } from 'lucide-react'
+import { toast } from 'react-hot-toast'
 
 interface ReservationModalProps {
   isOpen: boolean
@@ -9,6 +10,7 @@ interface ReservationModalProps {
 }
 
 export default function ReservationModal({ isOpen, onClose }: ReservationModalProps) {
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,7 +41,9 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
     }
   }, [isOpen, onClose])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
@@ -47,10 +51,54 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Reservation Form Data:", formData)
-    onClose()
+    setIsLoading(true)
+
+    const partySize = parseInt(formData.seats.split(" ")[0]) || 1
+
+    const combinedDateTime = new Date(`${formData.date}T${formData.time}`)
+
+    const payload = {
+      customerName: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      date: combinedDateTime,
+      time: formData.time,
+      partySize,
+      notes: formData.specialRequests,
+    }
+
+    try {
+      const response = await fetch("/api/reservation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message || "Failed to make reservation")
+      }
+
+      toast.success("Reservation submitted successfully!")
+      onClose()
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
+        time: "",
+        seats: "1 person",
+        specialRequests: "",
+      })
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to make reservation")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   if (!isOpen) return null
@@ -152,14 +200,11 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                   required
                   className="w-full bg-transparent border-b border-gray-600 focus:border-[#d8b78e] py-2 outline-none transition-colors"
                 >
-                  <option value="1 person">1 person</option>
-                  <option value="2 people">2 people</option>
-                  <option value="3 people">3 people</option>
-                  <option value="4 people">4 people</option>
-                  <option value="5 people">5 people</option>
-                  <option value="6 people">6 people</option>
-                  <option value="7 people">7 people</option>
-                  <option value="8 people">8 people</option>
+                  {Array.from({ length: 8 }, (_, i) => (
+                    <option key={i + 1} value={`${i + 1} ${i + 1 === 1 ? "person" : "people"}`}>
+                      {i + 1} {i + 1 === 1 ? "person" : "people"}
+                    </option>
+                  ))}
                   <option value="9+ people">9+ people</option>
                 </select>
               </div>
@@ -182,9 +227,17 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
             <div className="flex justify-center mt-8">
               <button
                 type="submit"
-                className="px-8 py-3 bg-[#d8b78e] text-white font-medium hover:bg-[#c3a57d] transition-colors rounded-sm"
+                disabled={isLoading}
+                className="px-8 py-3 bg-[#d8b78e] text-white font-medium hover:bg-[#c3a57d] transition-colors rounded-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
-                Book Now
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  'Book Now'
+                )}
               </button>
             </div>
           </form>
